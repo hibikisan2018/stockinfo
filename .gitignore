@@ -1,2 +1,6 @@
 tests/
 .spyproject/
+build/
+dist/
+stocinfo.egg-info/
+
