@@ -13,9 +13,14 @@ import time
 import requests
 import bs4
 
+def readtokenfile(filename):
+    with open(filename, 'r') as f:
+        token = f.read()
+    return token
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-l", "--log", help="define log level")
-parser.add_argument("token", help="the token of LINE notify")
+parser.add_argument("tokenfile", help="the token of LINE notify")
 args = parser.parse_args()
 
 if args.log == None:
@@ -31,7 +36,8 @@ else:
         raise ValueError('Invalid log level:{}'.format(loglevel))
     logging.critical('\nStart program...')
     
-TOKEN = args.token
+#TOKEN = args.token
+TOKEN = readtokenfile(args.tokenfile)
 
 def get_data_from_website(url, css_selector, n):
     '''Get data from website from 'url' with CSS selector 

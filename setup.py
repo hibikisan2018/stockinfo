@@ -13,7 +13,7 @@ with open('LICENSE') as f:
 
 setup(
     name='stockinfo',
-    version='0.0.1',
+    version='0.1.0',
     description='Notifying N225 and USD/JPN through LINE notify',
     long_description=readme,
     author='hibikisan2018',
