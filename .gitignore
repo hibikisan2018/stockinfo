@@ -3,4 +3,4 @@ tests/
 build/
 dist/
 stockinfo.egg-info/
-
+stockinfo/.linetoken
