@@ -15,7 +15,7 @@ import bs4
 
 def readtokenfile(filename):
     with open(filename, 'r') as f:
-        token = f.read()
+        token = f.read().strip() #removing line feed code
     return token
 
 parser = argparse.ArgumentParser()
@@ -36,8 +36,9 @@ else:
         raise ValueError('Invalid log level:{}'.format(loglevel))
     logging.critical('\nStart program...')
     
-#TOKEN = args.token
 TOKEN = readtokenfile(args.tokenfile)
+logging.debug('TOKEN:{}'.format(TOKEN))
+
 
 def get_data_from_website(url, css_selector, n):
     '''Get data from website from 'url' with CSS selector 
@@ -82,15 +83,14 @@ def sendmessage(message):
 
     url = "https://notify-api.line.me/api/notify"
     headers = {"Authorization" : "Bearer "+ TOKEN}
+    logging.debug('headers:{}'.format(headers))
     
     payload = {"message" :  message}
-    #files = {"imageFile": open("test.jpg", "rb")} #バイナリで画像ファイルを開きます。対応している形式はPNG/JPEGです。
     
     r = requests.post(url ,headers = headers ,params=payload)
     logging.debug('Response:{}'.format(r.text))
     logging.debug('Response Header:{}'.format(r.headers))
     logging.debug('--end sendmessage()')
-
 
 def main():
 
