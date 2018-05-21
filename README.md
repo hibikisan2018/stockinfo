@@ -1,4 +1,5 @@
 # N225&FX notification program
+
 This program is to notify the N225 price and JPN/USD price through LINE notity.
 
 ## 1. Usage
